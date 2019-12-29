@@ -10,8 +10,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(bodyParser.json())
 
+require("./routes/api-routes.js")(app); 
 require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
