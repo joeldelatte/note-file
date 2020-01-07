@@ -19,15 +19,21 @@ module.exports = function(app) {
         res.send(note);
         fs.writeFile('./db/db.json', JSON.stringify(db), (err)=>console.log(err));
 
-    })
+    });
     app.get('/api/notes/:id', function(req, res) {
-            const note = db.filter((n => n.id === req.params.id));
-            console.log(note);
-            res.send(note);
-        });
-    
-    
+        let note = db.filter((n => n.id === req.params.id));
+        res.send(note);
+    });
 
+    app.delete('api/notes/:id', function (req, res) {
+        var note = db.filter(function(n) {
+            n.id = req.params.id;
+        })
+        var notes = db.splice(note.id, 1);
+        res.send(notes);
+        console.log(note);
+        
+    })
     
-}
+};
 
