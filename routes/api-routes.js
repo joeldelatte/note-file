@@ -11,7 +11,6 @@ module.exports = function(app) {
         const note = {
             title: req.body.title,
             text: req.body.text,
-            // id: `${db.length +1}`
             id: db.length +1
         };
 
